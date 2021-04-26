@@ -1,0 +1,120 @@
+'''
+Tugas Regresi antar Kolom di csv
+Nama = Lathifah Nurul Azizah
+NIM = 21060120130074
+Algoritma dan Pemrograman A
+'''
+import pandas as pd
+menu = pd.read_csv("menu.csv")
+print(menu)
+
+#menganalisis statistik
+menu.describe(include="all")
+
+#menganalisis age ke sex
+a = menu["Carbohydrates"]
+b = menu["Total Fat"]
+c = menu["Protein"]
+d = menu["Calories"]
+e = menu["Sugars"]
+
+#regresi karbo dan total fat
+from scipy import stats
+import matplotlib.pyplot as plt
+m , g, r, p, std_err = stats.linregress(a, b)
+print("Nilai kemiringan dari hubungan Karbohidrat dengan total fat adalah")
+print(m)
+
+###
+def reglinier(a):
+    return m * a + g
+
+print("Regresi antara Karbohidrat dan Total Fat")
+rumusanregresi = list(map(reglinier, a))
+plt.scatter(a, b)
+plt.xlabel("Carbohydrates")
+plt.ylabel("Total Fat")
+plt.title("Hubungan Karbohidrat dengan Total Fat")
+plt.plot(a, rumusanregresi)
+plt.show()
+
+print("Nilai (r) dari hubungan karbohidrat dengan total fat adalah")
+print(r)
+print("Nilai error dari hubungan karbohidrat dengan total fat adalah")
+print(std_err)
+
+#regresi protein dan total fat
+from scipy import stats
+import matplotlib.pyplot as plt
+m , g, r, p, std_err = stats.linregress(c, b)
+print("Nilai kemiringan dari hubungan protein dengan total fat adalah")
+print(m)
+
+###
+def reglinier(c):
+    return m * c + g
+
+print("Regresi antara Protein dan Total Fat")
+rumusanregresi = list(map(reglinier, c))
+plt.scatter(c, b)
+plt.xlabel("Protein")
+plt.ylabel("Total Fat")
+plt.title("Hubungan Protein dengan Total Fat")
+plt.plot(c, rumusanregresi)
+plt.show()
+
+print("Nilai (r) dari hubungan Protein dengan total fat adalah")
+print(r)
+print("Nilai error dari hubungan Protein dengan total fat adalah")
+print(std_err)
+
+#regresi kalori dan total fat
+from scipy import stats
+import matplotlib.pyplot as plt
+m , g, r, p, std_err = stats.linregress(d, b)
+print("Nilai kemiringan dari hubungan kalori dengan total fat adalah")
+print(m)
+
+###
+def reglinier(d):
+    return m * d + g
+
+print("Regresi antara Kalori dan Total Fat")
+rumusanregresi = list(map(reglinier, d))
+plt.scatter(d, b)
+plt.xlabel("Kalori")
+plt.ylabel("Total Fat")
+plt.title("Hubungan Kalori dengan Total Fat")
+plt.plot(d, rumusanregresi)
+plt.show()
+
+print("Nilai (r) dari hubungan Kalori dengan total fat adalah")
+print(r)
+print("Nilai error dari hubungan Kalori dengan total fat adalah")
+print(std_err)
+
+
+#regresi gula dan total fat
+from scipy import stats
+import matplotlib.pyplot as plt
+m , g, r, p, std_err = stats.linregress(e, b)
+print("Nilai kemiringan dari hubungan gula dengan total fat adalah")
+print(m)
+
+###
+def reglinier(e):
+    return m * e + g
+
+print("Regresi antara gula dan Total Fat")
+rumusanregresi = list(map(reglinier, e))
+plt.scatter(e, b)
+plt.xlabel("gula")
+plt.ylabel("Total Fat")
+plt.title("Hubungan gula dengan Total Fat")
+plt.plot(e, rumusanregresi)
+plt.show()
+
+print("Nilai (r) dari hubungan gula dengan total fat adalah")
+print(r)
+print("Nilai error dari hubungan gula dengan total fat adalah")
+print(std_err)
